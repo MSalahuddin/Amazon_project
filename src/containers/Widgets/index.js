@@ -41,6 +41,11 @@ import Picky from "react-picky";
 import "react-picky/dist/picky.css";
 
 const Option = SelectOption;
+const bigList = [];
+
+for (var i = 1; i <= 1000; i++) {
+  bigList.push({ id: i, name: `Item ${i}` });
+}
 export default class extends Component {
   constructor(props) {
     super(props);
@@ -59,7 +64,6 @@ export default class extends Component {
       <Table basic="very" celled collapsing style={{ width: "100%" }}>
         <Table.Header style={{ textAlign: "center" }}>
           <Table.Row style={{ height: "100px" }}>
-            <Table.HeaderCell>Products</Table.HeaderCell>
             <Table.HeaderCell>Units</Table.HeaderCell>
             <Table.HeaderCell>Refunds</Table.HeaderCell>
             <Table.HeaderCell>Sales</Table.HeaderCell>
@@ -153,7 +157,7 @@ export default class extends Component {
               value={this.state.multiSelectVal}
               options={bigList}
               onChange={value => this.selectMultipleOption(value)}
-              open={true}
+              open={false}
               valueKey="id"
               labelKey="name"
               multiple={true}
