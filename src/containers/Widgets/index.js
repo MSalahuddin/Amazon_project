@@ -23,9 +23,6 @@ import Input, {
 } from "../../components/uielements/input";
 import Select, { SelectOption } from "../../components/uielements/select";
 import * as rechartConfigs from "../Charts/recharts/config";
-import { StackedAreaChart } from "../Charts/recharts/charts/";
-import { GoogleChart } from "../Charts/googleChart/";
-import * as googleChartConfigs from "../Charts/googleChart/config";
 import IntlMessages from "../../components/utility/intlMessages";
 
 import Carousel from "react-multi-carousel";
@@ -35,11 +32,21 @@ import CustomCard from "./customCard/custom-card";
 import Box from "../../components/utility/box";
 import { Icon } from "antd";
 import Tabs, { TabPane } from "../../components/uielements/tabs";
-import { Label, Menu, Table, Header, Image } from "semantic-ui-react";
+import { Progress, Menu, Table, Header, Image } from "semantic-ui-react";
 import Button, { ButtonGroup } from "../../components/uielements/button";
 import Picky from "react-picky";
 import "react-picky/dist/picky.css";
 import "./style.css";
+import { ResponsiveBar } from "@nivo/bar";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeading,
+  AccordionItemButton,
+  AccordionItemPanel
+} from "react-accessible-accordion";
+
+import "react-accessible-accordion/dist/fancy-example.css";
 const Option = SelectOption;
 const bigList = [];
 
@@ -432,16 +439,315 @@ export default class extends Component {
           >
             {this.TableExampleCollapsing()}
           </TabPane>
+        </Tabs>
+      </Row>
+    );
+  };
+
+  renderChart = () => {
+    let data = [
+      {
+        country: "Gross Sales",
+        "PPC Sales": 130,
+        lable: "PPC Sales 17%",
+        "hot dogColor": "hsl(127, 70%, 50%)",
+        "Organic Sales": 100,
+        lable: "Organic Sales 17%",
+        burgerColor: "hsl(42, 70%, 50%)"
+      },
+      {
+        country: "Cost",
+        "FBA Fees": 120,
+        lable: "FBA Fees 17%",
+        sandwichColor: "hsl(56, 70%, 50%)",
+        "Amazon Fees": 105,
+        lable: "Amazon Fees 17%",
+        kebabColor: "hsl(166, 70%, 50%)",
+        "PPC SP Costs": 90,
+        lable: "PPC SP Costs 17%",
+        friesColor: "hsl(260, 70%, 50%)",
+        "PPC SP Cost": 62,
+        lable: "PPC SP Cost 17%",
+        donutColor: "hsl(267, 70%, 50%)"
+      },
+      {
+        country: "Profit",
+        profit: 56,
+        lable: "Profit 17%",
+        "hot dogColor": "hsl(119, 70%, 50%)"
+      }
+    ];
+    return (
+      <Row
+        style={{
+          display: "flex"
+        }}
+      >
+        <Col md={18} xs={24}>
+          <ResponsiveBar
+            data={data}
+            groupMode="stacked"
+            layout="vertical"
+            padding={0.2}
+            innerPadding={2}
+            enableGridY={true}
+            height={500}
+            label={value => {
+              return value.id;
+            }}
+            // labelFormat={(value, id, data) => {
+            //   console.log(value, "1111111111111");
+            //   console.log(id, "1111111111111");
+            // }}
+            keys={[
+              "hot dog",
+              "burger",
+              "sandwich",
+              "kebab",
+              "fries",
+              "donut",
+              "PPC Sales",
+              "Organic Sales",
+              "FBA Fees",
+              "Amazon Fees",
+              "PPC SP Costs",
+              "PPC SP Cost",
+              "profit"
+            ]}
+            indexBy="country"
+            margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+            colors={{ scheme: "nivo" }}
+            defs={[
+              {
+                id: "dots",
+                type: "patternDots",
+                background: "inherit",
+                color: "#38bcb2",
+                size: 4,
+                padding: 1,
+                stagger: true
+              },
+              {
+                id: "lines",
+                type: "patternLines",
+                background: "inherit",
+                color: "#eed312",
+                rotation: -45,
+                lineWidth: 6,
+                spacing: 10
+              }
+            ]}
+            fill={[
+              {
+                match: {
+                  id: "fries"
+                },
+                id: "dots"
+              },
+              {
+                match: {
+                  id: "sandwich"
+                },
+                id: "lines"
+              }
+            ]}
+            borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
+            axisTop={null}
+            axisRight={null}
+            // axisBottom={{
+            //   tickSize: 5,
+            //   tickPadding: 5,
+            //   tickRotation: 0,
+            //   legend: "country",
+            //   legendPosition: "middle",
+            //   legendOffset: 32
+            // }}
+
+            // axisLeft={{
+            //   tickSize: 5,
+            //   tickPadding: 5,
+            //   tickRotation: 0,
+            //   legend: "food",
+            //   legendPosition: "middle",
+            //   legendOffset: -40
+            // }}
+            labelSkipWidth={12}
+            labelSkipHeight={12}
+            labelTextColor={"white"}
+            labelFormat={data => {
+              return data;
+            }}
+            //labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
+            legends={[
+              {
+                dataFrom: "keys",
+                anchor: "bottom-right",
+                direction: "column",
+                justify: false,
+                translateX: 120,
+                translateY: 0,
+                itemsSpacing: 2,
+                itemWidth: 100,
+                itemHeight: 20,
+                itemDirection: "left-to-right",
+                itemOpacity: 0.85,
+                symbolSize: 20,
+                effects: [
+                  {
+                    on: "hover",
+                    style: {
+                      itemOpacity: 1
+                    }
+                  }
+                ]
+              }
+            ]}
+            animate={true}
+            motionStiffness={90}
+            motionDamping={15}
+          />
+        </Col>
+        <Col md={6} xs={24} style={{}}>
+          {this.renderAccordion()}
+        </Col>
+      </Row>
+    );
+  };
+
+  renderAccordion = () => {
+    return (
+      <Accordion
+        allowMultipleExpanded={true}
+        style={{ marginTop: "20px", marginLeft: "10px", marginRight: "10px" }}
+      >
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>Sales</p>
+              <p>$18,667.99</p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel style={{}}>
+            <div>
+              <p style={{ float: "left" }}>Organic</p>
+              <p style={{ float: "right" }}> $17,403.88</p>
+            </div>
+            <div>
+              <p style={{ float: "left" }}>PPC</p>
+              <p style={{ float: "right" }}>$17,4.88</p>
+            </div>
+          </AccordionItemPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>Units</p>
+              <p>$15,142.99</p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel style={{}}>
+            <p>Organic</p>
+            <p>$17,403.88</p>
+            <p>PPC</p>
+            <p>$17,403.88</p>
+          </AccordionItemPanel>
+        </AccordionItem>{" "}
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>Promo</p>
+              <p>$0.99</p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel style={{}}>
+            <p>Organic</p>
+            <p>$17,403.88</p>
+            <p>PPC</p>
+            <p>$17,403.88</p>
+          </AccordionItemPanel>
+        </AccordionItem>{" "}
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>Advertising cost</p>
+              <p>$18,667.99</p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel style={{}}>
+            <p>Organic</p>
+            <p>$17,403.88</p>
+            <p>PPC</p>
+            <p>$17,403.88</p>
+          </AccordionItemPanel>
+        </AccordionItem>{" "}
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>Giftwrap</p>
+              <p>$18,667.99</p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel style={{}}>
+            <p>Organic</p>
+            <p>$17,403.88</p>
+            <p>PPC</p>
+            <p>$17,403.88</p>
+          </AccordionItemPanel>
+        </AccordionItem>{" "}
+        <AccordionItem>
+          <AccordionItemHeading>
+            <AccordionItemButton>
+              <p>Shipping</p>
+              <p>$18,667.99</p>
+            </AccordionItemButton>
+          </AccordionItemHeading>
+          <AccordionItemPanel style={{}}>
+            <p>Organic</p>
+            <p>$17,403.88</p>
+            <p>PPC</p>
+            <p>$17,403.88</p>
+          </AccordionItemPanel>
+        </AccordionItem>
+      </Accordion>
+    );
+  };
+
+  renderChartTable = () => {
+    return (
+      <Row>
+        <Tabs defaultActiveKey="1">
+          <TabPane
+            tab={
+              <span>
+                <Icon type="audit" />
+                All
+              </span>
+            }
+            key="1"
+          >
+            {this.TableExampleCollapsing()}
+          </TabPane>
           <TabPane
             tab={
               <span>
                 <Icon type="shopping-cart " />
-                Order Items
+                Sales
               </span>
             }
             key="2"
           >
-            Tab 2
+            {this.TableExampleCollapsing()}
+          </TabPane>
+          <TabPane
+            tab={
+              <span>
+                <Icon type="shopping-cart " />
+                Cost
+              </span>
+            }
+            key="3"
+          >
+            {this.TableExampleCollapsing()}
           </TabPane>
         </Tabs>
       </Row>
@@ -528,7 +834,9 @@ export default class extends Component {
                         }
                         key="2"
                       >
-                        Tab 2
+                        {this.renderTab1Filters()}
+                        {this.renderChart()}
+                        {this.renderChartTable()}
                       </TabPane>
                     </Tabs>
                   </Box>
