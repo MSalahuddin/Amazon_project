@@ -12,7 +12,7 @@ export default class extends Component {
     return (
       <SaleWidgetWrapper className="isoSaleWidget">
         <Row>
-          <div style={this.props.headerStyle}>
+          <div style={{ backgroundColor: "#79c1d9" }}>
             <p
               style={{
                 color: "white",
