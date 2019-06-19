@@ -32,7 +32,7 @@ export default class extends Component {
           </h3>
           {isSeprator && (
             <div
-              style={{ height: 1, width: "100%", backgroundColor: "grey" }}
+              style={{ height: 1, width: "100%", backgroundColor: "#ddd" }}
             />
           )}
           <div style={textStyle}>

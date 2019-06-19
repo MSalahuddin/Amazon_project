@@ -39,7 +39,7 @@ import { Label, Menu, Table, Header, Image } from "semantic-ui-react";
 import Button, { ButtonGroup } from "../../components/uielements/button";
 import Picky from "react-picky";
 import "react-picky/dist/picky.css";
-
+import "./style.css";
 const Option = SelectOption;
 const bigList = [];
 
@@ -52,7 +52,11 @@ export default class extends Component {
     this.state = {
       activeItemIndex: 1,
       val: undefined,
+<<<<<<< HEAD
       multiSelectVal: []
+=======
+      multiSelectVal: "All Products"
+>>>>>>> 3370e5b8146b28c2126ad027cda9f966a7c19d4a
     };
   }
   // onBackPress = () => {
@@ -65,53 +69,108 @@ export default class extends Component {
 
   TableExampleCollapsing = () => {
     return (
-      <Table basic="very" celled collapsing style={{ width: "100%" }}>
-        <Table.Header style={{ textAlign: "center" }}>
-          <Table.Row style={{ height: "100px" }}>
-            <Table.HeaderCell>Units</Table.HeaderCell>
-            <Table.HeaderCell>Refunds</Table.HeaderCell>
-            <Table.HeaderCell>Sales</Table.HeaderCell>
-            <Table.HeaderCell>Promo</Table.HeaderCell>
-            <Table.HeaderCell>Ads</Table.HeaderCell>
-            <Table.HeaderCell>Gross profit</Table.HeaderCell>
-            <Table.HeaderCell>Net profit</Table.HeaderCell>
-            <Table.HeaderCell>Margin</Table.HeaderCell>
-            <Table.HeaderCell>ROI</Table.HeaderCell>
-            <Table.HeaderCell>Info</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          <Table.Row style={{ textAlign: "center" }}>
-            <Table.Cell>
-              <div style={{ width: "20%", float: "left", textAlign: "left" }}>
+      <div className="table-responsive">
+        <Table
+          basic="very"
+          celled
+          collapsing
+          style={{ width: "97%", margin: "15px" }}
+        >
+          <Table.Header style={{ textAlign: "center" }}>
+            <Table.Row style={{ height: "60px", backgroundColor: "#f1f3f6" }}>
+              <Table.HeaderCell
+                style={{
+                  textAlign: "left",
+                  paddingLeft: "10px",
+                  border: "1px solid #ddd"
+                }}
+              >
+                Products
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Units
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Refunds
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Sales
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Promo
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Ads
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Gross profit
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Net profit
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Margin
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                ROI
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Info
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            <Table.Row style={{ textAlign: "center" }}>
+              <Table.Cell
+                style={{
+                  padding: "10px 0px 10px 0px",
+                  border: "1px solid #ddd"
+                }}
+              >
                 <Image
                   src="https://react.semantic-ui.com/images/avatar/small/lena.png"
                   rounded
                   size="mini"
-                  style={{ width: "80%" }}
+                  style={{ width: "14%", float: "left" }}
                 />
-              </div>
-              <div style={{ width: "80%", float: "left", textAlign: "left" }}>
-                <p>Jewelry Packaging Gift Box 2.5*2.5*3cm</p>
-                <p style={{ color: "#4e91ff" }}>
-                  B0XLFX8JXK / SKU 2 / COG: 0.75 /
+
+                <p>
+                  Jewelry Packaging Gift Box 2.5*2.5*3cm
+                  <br />
+                  <b style={{ color: "#4e91ff" }}>
+                    B0XLFX8JXK / SKU 2 / COG: 0.75 /
+                  </b>
+                  <br />
+                  Price: $ 9.99 / FBA
                 </p>
-                <p>Price: $ 9.99 / FBA</p>
-              </div>
-            </Table.Cell>
-            <Table.Cell>22</Table.Cell>
-            <Table.Cell>22</Table.Cell>
-            <Table.Cell>$ 41.69</Table.Cell>
-            <Table.Cell>$ 0.00</Table.Cell>
-            <Table.Cell>$ 0.00</Table.Cell>
-            <Table.Cell>$ -25.72</Table.Cell>
-            <Table.Cell> $ -25.72</Table.Cell>
-            <Table.Cell>-62%</Table.Cell>
-            <Table.Cell>-739%</Table.Cell>
-            <Table.Cell>More</Table.Cell>
-          </Table.Row>
-        </Table.Body>
-      </Table>
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>22</Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>22</Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                $ 41.69
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                $ 0.00
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                $ 0.00
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                $ -25.72
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                {" "}
+                $ -25.72
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>-62%</Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                -739%
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>More</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+      </div>
     );
   };
 
@@ -130,33 +189,46 @@ export default class extends Component {
         gutter={0}
         justify="start"
       >
-        <Col lg={6} md={5} sm={5} xs={5} style={{ margin: "16px" }}>
-          <InputGroup>
-            <Select style={{ width: "100%" }} defaultValue="Zhejiang">
-              <Option style={{ margin: "20px" }} value="Zhejiang">
-                Period: Today / Yesterday / Forecast...
-              </Option>
-              <Option style={{ margin: "20px" }} value="Jiangsu">
-                Period: Today / Yesterday...
-              </Option>
-              <Option style={{ margin: "20px" }} value="Jiangsu">
-                Period: Today / Yesterday / 7 days...
-              </Option>
-              <Option style={{ margin: "20px" }} value="Jiangsu">
-                Period: This Week / Last Week...
-              </Option>
-              <Option style={{ margin: "20px" }} value="Jiangsu">
-                Period: This Month / Last Month...
-              </Option>
-              <Option style={{ margin: "20px" }} value="Jiangsu">
-                Custom range
-              </Option>
-            </Select>
-          </InputGroup>
+        <Col md={6} xs={24} style={{ padding: " 0px 10px 0px 10px" }}>
+          <Select
+            style={{
+              border: "2px solid #ddd",
+              borderRadius: "6px",
+              width: "100%"
+            }}
+            defaultValue="Zhejiang"
+          >
+            <Option style={{ margin: "20px" }} value="Zhejiang">
+              Period: Today / Yesterday / Forecast...
+            </Option>
+            <Option style={{ margin: "20px" }} value="Jiangsu">
+              Period: Today / Yesterday...
+            </Option>
+            <Option style={{ margin: "20px" }} value="Jiangsu">
+              Period: Today / Yesterday / 7 days...
+            </Option>
+            <Option style={{ margin: "20px" }} value="Jiangsu">
+              Period: This Week / Last Week...
+            </Option>
+            <Option style={{ margin: "20px" }} value="Jiangsu">
+              Period: This Month / Last Month...
+            </Option>
+            <Option style={{ margin: "20px" }} value="Jiangsu">
+              Custom range
+            </Option>
+          </Select>
         </Col>
 
-        <Col lg={5} md={5} sm={5} xs={5} style={{ margin: "16px" }}>
-          <InputGroup compact>
+        <Col md={6} xs={24} style={{ padding: " 0px 10px 0px 10px" }}>
+          <InputGroup
+            compact
+            style={{
+              backgroundColor: "red",
+              border: "2px solid #ddd",
+              borderRadius: "6px",
+              fontWeight: "500"
+            }}
+          >
             <Picky
               value={this.state.multiSelectVal}
               options={bigList}
@@ -171,13 +243,17 @@ export default class extends Component {
             />
           </InputGroup>
         </Col>
-        <Col lg={5} md={5} sm={5} xs={5} style={{ margin: "16px" }}>
+        <Col md={6} xs={24} style={{ padding: " 0px 10px 0px 10px" }}>
           <InputGroup compact>
             <Select
               onChange={value => {
                 this.setState({ val: value });
               }}
-              style={{ width: "100%" }}
+              style={{
+                width: "100%",
+                border: "2px solid #ddd",
+                borderRadius: "6px"
+              }}
               defaultValue="
                 All Marketplaces"
             >
@@ -199,7 +275,7 @@ export default class extends Component {
             </Select>
           </InputGroup>
         </Col>
-        <Col lg={5} md={5} sm={5} xs={5} style={{ margin: "16px" }}>
+        <Col md={6} xs={24} style={{ padding: " 0px 10px 0px 10px" }}>
           <Button type="primary" style={{ width: "100%" }}>
             {<IntlMessages id="Filter" />}
           </Button>
@@ -270,6 +346,7 @@ export default class extends Component {
               <IsoWidgetsWrapper>
                 {/* Sale Widget */}
                 <CustomCard
+                  headerStyle={{ backgroundColor: "rgb(78, 145, 255)" }}
                   date={"06/12/2016"}
                   label={<IntlMessages id="Today" />}
                   price={<IntlMessages id="widget.salewidget1.price" />}
@@ -282,8 +359,9 @@ export default class extends Component {
               <IsoWidgetsWrapper>
                 {/* Sale Widget */}
                 <CustomCard
+                  headerStyle={{ backgroundColor: "rgb(37, 116, 183)" }}
                   date={"06/12/2016"}
-                  label={<IntlMessages id="Today" />}
+                  label={<IntlMessages id="Yesterday" />}
                   price={<IntlMessages id="widget.salewidget1.price" />}
                   details={<IntlMessages id="widget.salewidget1.details" />}
                   fontColor="#F75D81"
@@ -294,8 +372,9 @@ export default class extends Component {
               <IsoWidgetsWrapper>
                 {/* Sale Widget */}
                 <CustomCard
+                  headerStyle={{ backgroundColor: "rgb(32, 134, 68)" }}
                   date={"06/12/2016"}
-                  label={<IntlMessages id="Today" />}
+                  label={<IntlMessages id="This Month" />}
                   price={<IntlMessages id="widget.salewidget1.price" />}
                   details={<IntlMessages id="widget.salewidget1.details" />}
                   fontColor="#F75D81"
@@ -306,8 +385,9 @@ export default class extends Component {
               <IsoWidgetsWrapper>
                 {/* Sale Widget */}
                 <CustomCard
+                  headerStyle={{ backgroundColor: "rgb(35, 103, 68)" }}
                   date={"06/12/2016"}
-                  label={<IntlMessages id="Today" />}
+                  label={<IntlMessages id="This Month(Forecast)" />}
                   price={<IntlMessages id="widget.salewidget1.price" />}
                   details={<IntlMessages id="widget.salewidget1.details" />}
                   fontColor="#F75D81"
@@ -318,8 +398,9 @@ export default class extends Component {
               <IsoWidgetsWrapper>
                 {/* Sale Widget */}
                 <CustomCard
+                  headerStyle={{ backgroundColor: "rgb(77, 130, 102)" }}
                   date={"06/12/2016"}
-                  label={<IntlMessages id="Today" />}
+                  label={<IntlMessages id="Last Month" />}
                   price={<IntlMessages id="widget.salewidget1.price" />}
                   details={<IntlMessages id="widget.salewidget1.details" />}
                   fontColor="#F75D81"
