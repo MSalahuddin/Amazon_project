@@ -450,10 +450,10 @@ export default class extends Component {
         country: "Gross Sales",
         "PPC Sales": 130,
         lable: "PPC Sales 17%",
-        "hot dogColor": "hsl(127, 70%, 50%)",
+        "hot dogColor": "black",
         "Organic Sales": 100,
         lable: "Organic Sales 17%",
-        burgerColor: "hsl(42, 70%, 50%)"
+        burgerColor: "green"
       },
       {
         country: "Cost",
@@ -472,7 +472,7 @@ export default class extends Component {
       },
       {
         country: "Profit",
-        profit: 56,
+        profit: 90,
         lable: "Profit 17%",
         "hot dogColor": "hsl(119, 70%, 50%)"
       }
@@ -516,7 +516,7 @@ export default class extends Component {
             ]}
             indexBy="country"
             margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
-            colors={{ scheme: "nivo" }}
+            colors={{ scheme: "category10" }}
             defs={[
               {
                 id: "dots",
@@ -623,82 +623,189 @@ export default class extends Component {
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <p>Sales</p>
-              <p>$18,667.99</p>
+              <div>
+                <span>Sales</span>
+                <span
+                  style={{
+                    float: "right",
+                    textAlign: "right",
+                    marginRight: "10px"
+                  }}
+                >
+                  {" "}
+                  $17,403.88
+                </span>
+              </div>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel style={{}}>
             <div>
-              <p style={{ float: "left" }}>Organic</p>
-              <p style={{ float: "right" }}> $17,403.88</p>
+              <span>Organic</span>
+              <span style={{ float: "right", textAlign: "right" }}>
+                {" "}
+                $17,403.88
+              </span>
             </div>
             <div>
-              <p style={{ float: "left" }}>PPC</p>
-              <p style={{ float: "right" }}>$17,4.88</p>
+              <span>PPC</span>
+              <span style={{ float: "right", textAlign: "right" }}>
+                $17,4.88
+              </span>
             </div>
           </AccordionItemPanel>
         </AccordionItem>
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <p>Units</p>
-              <p>$15,142.99</p>
+              <div>
+                <span>Units</span>
+                <span
+                  style={{
+                    float: "right",
+                    textAlign: "right",
+                    marginRight: "10px"
+                  }}
+                >
+                  {" "}
+                  $17,403.88
+                </span>
+              </div>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel style={{}}>
-            <p>Organic</p>
-            <p>$17,403.88</p>
-            <p>PPC</p>
-            <p>$17,403.88</p>
+            <div>
+              <span>Organic</span>
+              <span style={{ float: "right", textAlign: "right" }}>
+                {" "}
+                $17,403.88
+              </span>
+            </div>
+            <div>
+              <span>PPC</span>
+              <span style={{ float: "right", textAlign: "right" }}>
+                $17,4.88
+              </span>
+            </div>
           </AccordionItemPanel>
         </AccordionItem>{" "}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <p>Promo</p>
-              <p>$0.99</p>
+              <div>
+                <span>Promo</span>
+                <span
+                  style={{
+                    float: "right",
+                    textAlign: "right",
+                    marginRight: "10px"
+                  }}
+                >
+                  {" "}
+                  $17,403.88
+                </span>
+              </div>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel style={{}}>
-            <p>Organic</p>
-            <p>$17,403.88</p>
-            <p>PPC</p>
-            <p>$17,403.88</p>
+            <div>
+              <span>Organic</span>
+              <span style={{ float: "right", textAlign: "right" }}>
+                {" "}
+                $17,403.88
+              </span>
+            </div>
+            <div>
+              <span>PPC</span>
+              <span style={{ float: "right", textAlign: "right" }}>
+                $17,4.88
+              </span>
+            </div>
           </AccordionItemPanel>
         </AccordionItem>{" "}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <p>Advertising cost</p>
-              <p>$18,667.99</p>
+              <div>
+                <span>Advertising Cost</span>
+                <span
+                  style={{
+                    float: "right",
+                    textAlign: "right",
+                    marginRight: "10px"
+                  }}
+                >
+                  {" "}
+                  $17,403.88
+                </span>
+              </div>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel style={{}}>
-            <p>Organic</p>
-            <p>$17,403.88</p>
-            <p>PPC</p>
-            <p>$17,403.88</p>
+            <div>
+              <span>Organic</span>
+              <span style={{ float: "right", textAlign: "right" }}>
+                {" "}
+                $17,403.88
+              </span>
+            </div>
+            <div>
+              <span>PPC</span>
+              <span style={{ float: "right", textAlign: "right" }}>
+                $17,4.88
+              </span>
+            </div>
           </AccordionItemPanel>
         </AccordionItem>{" "}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <p>Giftwrap</p>
-              <p>$18,667.99</p>
+              <div>
+                <span>Giftwrap</span>
+                <span
+                  style={{
+                    float: "right",
+                    textAlign: "right",
+                    marginRight: "10px"
+                  }}
+                >
+                  {" "}
+                  $17,403.88
+                </span>
+              </div>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel style={{}}>
-            <p>Organic</p>
-            <p>$17,403.88</p>
-            <p>PPC</p>
-            <p>$17,403.88</p>
+            <div>
+              <span>Organic</span>
+              <span style={{ float: "right", textAlign: "right" }}>
+                {" "}
+                $17,403.88
+              </span>
+            </div>
+            <div>
+              <span>PPC</span>
+              <span style={{ float: "right", textAlign: "right" }}>
+                $17,4.88
+              </span>
+            </div>
           </AccordionItemPanel>
         </AccordionItem>{" "}
         <AccordionItem>
           <AccordionItemHeading>
             <AccordionItemButton>
-              <p>Shipping</p>
-              <p>$18,667.99</p>
+              <div>
+                <span>Shipping</span>
+                <span
+                  style={{
+                    float: "right",
+                    textAlign: "right",
+                    marginRight: "10px"
+                  }}
+                >
+                  {" "}
+                  $17,403.88
+                </span>
+              </div>
             </AccordionItemButton>
           </AccordionItemHeading>
           <AccordionItemPanel style={{}}>
