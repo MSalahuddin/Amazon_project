@@ -30,9 +30,9 @@ import "react-multi-carousel/lib/styles.css";
 
 import CustomCard from "./customCard/custom-card";
 import Box from "../../components/utility/box";
-import { Icon } from "antd";
+import { Icon, Progress } from "antd";
 import Tabs, { TabPane } from "../../components/uielements/tabs";
-import { Progress, Menu, Table, Header, Image } from "semantic-ui-react";
+import { Menu, Table, Header, Image } from "semantic-ui-react";
 import Button, { ButtonGroup } from "../../components/uielements/button";
 import Picky from "react-picky";
 import "react-picky/dist/picky.css";
@@ -170,6 +170,193 @@ export default class extends Component {
                 -739%
               </Table.Cell>
               <Table.Cell style={{ border: "1px solid #ddd" }}>More</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+      </div>
+    );
+  };
+
+  renderSalesTable = () => {
+    return (
+      <div className="table-responsive">
+        <Table
+          basic="very"
+          celled
+          collapsing
+          style={{ width: "97%", margin: "15px" }}
+        >
+          <Table.Header style={{ textAlign: "center" }}>
+            <Table.Row style={{ height: "60px", backgroundColor: "#f1f3f6" }}>
+              <Table.HeaderCell
+                style={{
+                  textAlign: "left",
+                  paddingLeft: "10px",
+                  border: "1px solid #ddd"
+                }}
+              >
+                Products
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Sales
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Units
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Promos
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Profit
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Margin
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            <Table.Row style={{ textAlign: "center" }}>
+              <Table.Cell
+                style={{
+                  padding: "10px 0px 10px 0px",
+                  border: "1px solid #ddd"
+                }}
+              >
+                <Image
+                  src="https://react.semantic-ui.com/images/avatar/small/lena.png"
+                  rounded
+                  size="mini"
+                  style={{ width: "14%", float: "left" }}
+                />
+
+                <p>
+                  Jewelry Packaging Gift Box 2.5*2.5*3cm
+                  <br />
+                  <b style={{ color: "#4e91ff" }}>
+                    B0XLFX8JXK / SKU 2 / COG: 0.75 /
+                  </b>
+                  <br />
+                  Price: $ 9.99 / FBA
+                </p>
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                <Progress percent={30} size="small" />
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                <Progress percent={50} size="small" />
+              </Table.Cell>
+
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                <Progress percent={10} size="small" />
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                <Progress percent={40} size="small" />
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                <Progress percent={60} size="small" />
+              </Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+      </div>
+    );
+  };
+
+  renderCostTable = () => {
+    return (
+      <div className="table-responsive">
+        <Table
+          basic="very"
+          celled
+          collapsing
+          style={{ width: "97%", margin: "15px" }}
+        >
+          <Table.Header style={{ textAlign: "center" }}>
+            <Table.Row style={{ height: "60px", backgroundColor: "#f1f3f6" }}>
+              <Table.HeaderCell
+                style={{
+                  textAlign: "left",
+                  paddingLeft: "10px",
+                  border: "1px solid #ddd"
+                }}
+              >
+                Products
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Price
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Shipping
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Net
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Cost of Goods
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Shipping Costs
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Amazon Fees
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                FBA Fees
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Total Cost
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Unit Profit
+              </Table.HeaderCell>
+              <Table.HeaderCell style={{ border: "1px solid #ddd" }}>
+                Margin
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            <Table.Row style={{ textAlign: "center" }}>
+              <Table.Cell
+                style={{
+                  padding: "10px 0px 10px 0px",
+                  border: "1px solid #ddd"
+                }}
+              >
+                <Image
+                  src="https://react.semantic-ui.com/images/avatar/small/lena.png"
+                  rounded
+                  size="mini"
+                  style={{ width: "14%", float: "left" }}
+                />
+
+                <p>
+                  Jewelry Packaging Gift Box 2.5*2.5*3cm
+                  <br />
+                  <b style={{ color: "#4e91ff" }}>
+                    B0XLFX8JXK / SKU 2 / COG: 0.75 /
+                  </b>
+                  <br />
+                  Price: $ 9.99 / FBA
+                </p>
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                USD 19.99
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>FBA</Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                19.99
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>60</Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>0.0</Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>3.00</Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>3.28</Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                12.28
+              </Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>7.71</Table.Cell>
+              <Table.Cell style={{ border: "1px solid #ddd" }}>
+                38.75
+              </Table.Cell>
             </Table.Row>
           </Table.Body>
         </Table>
@@ -450,31 +637,32 @@ export default class extends Component {
         country: "Gross Sales",
         "PPC Sales": 130,
         lable: "PPC Sales 17%",
+
         "hot dogColor": "black",
         "Organic Sales": 100,
         lable: "Organic Sales 17%",
-        burgerColor: "green"
+        burgerColor: "green",
+        "Organic Sales": 100,
+        lable: "Organic Sales 17%"
       },
       {
         country: "Cost",
         "FBA Fees": 120,
         lable: "FBA Fees 17%",
-        sandwichColor: "hsl(56, 70%, 50%)",
         "Amazon Fees": 105,
         lable: "Amazon Fees 17%",
-        kebabColor: "hsl(166, 70%, 50%)",
         "PPC SP Costs": 90,
         lable: "PPC SP Costs 17%",
-        friesColor: "hsl(260, 70%, 50%)",
         "PPC SP Cost": 62,
-        lable: "PPC SP Cost 17%",
-        donutColor: "hsl(267, 70%, 50%)"
+        lable: "PPC SP Cost 17%"
       },
       {
         country: "Profit",
         profit: 90,
         lable: "Profit 17%",
-        "hot dogColor": "hsl(119, 70%, 50%)"
+        "hot dogColor": "hsl(119, 70%, 50%)",
+        profit: 56,
+        lable: "Profit 17%"
       }
     ];
     return (
@@ -500,12 +688,6 @@ export default class extends Component {
             //   console.log(id, "1111111111111");
             // }}
             keys={[
-              "hot dog",
-              "burger",
-              "sandwich",
-              "kebab",
-              "fries",
-              "donut",
               "PPC Sales",
               "Organic Sales",
               "FBA Fees",
@@ -537,6 +719,26 @@ export default class extends Component {
                 spacing: 10
               }
             ]}
+            // defs={[
+            //   {
+            //     id: "dots",
+            //     type: "patternDots",
+            //     background: "inherit",
+            //     color: "#38bcb2",
+            //     size: 4,
+            //     padding: 1,
+            //     stagger: true
+            //   },
+            //   {
+            //     id: "lines",
+            //     type: "patternLines",
+            //     background: "inherit",
+            //     color: "#eed312",
+            //     rotation: -45,
+            //     lineWidth: 6,
+            //     spacing: 10
+            //   }
+            // ]}
             fill={[
               {
                 match: {
@@ -843,7 +1045,7 @@ export default class extends Component {
             }
             key="2"
           >
-            {this.TableExampleCollapsing()}
+            {this.renderSalesTable()}
           </TabPane>
           <TabPane
             tab={
@@ -854,7 +1056,7 @@ export default class extends Component {
             }
             key="3"
           >
-            {this.TableExampleCollapsing()}
+            {this.renderCostTable()}
           </TabPane>
         </Tabs>
       </Row>
