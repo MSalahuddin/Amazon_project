@@ -2,10 +2,18 @@
   "name": "isomorphic",
   "version": "2.9.6",
   "private": true,
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
   "dependencies": {
+    "@nivo/bar": "^0.59.0",
     "antd": "^3.13.2",
     "antd-local-icon": "^0.1.3",
     "auth0-lock": "^11.12.1",
+    "bootstrap": "^4.3.1",
     "card-react": "^1.2.7",
     "chart.js": "^2.7.3",
     "classnames": "^2.2.5",
@@ -34,6 +42,7 @@
     "react-addons-shallow-compare": "^15.5.2",
     "react-beautiful-dnd": "^10.0.3",
     "react-big-calendar": "^0.20.2",
+    "react-bootstrap": "^1.0.0-beta.9",
     "react-chartjs-2": "^2.5.7",
     "react-codemirror": "^1.0.0",
     "react-count-down": "^1.1.0",

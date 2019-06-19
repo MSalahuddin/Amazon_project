@@ -43,13 +43,17 @@ import "react-picky/dist/picky.css";
 const Option = SelectOption;
 const bigList = [];
 
-for (var i = 1; i <= 1000; i++) {
+for (var i = 1; i <= 820; i++) {
   bigList.push({ id: i, name: `Item ${i}` });
 }
 export default class extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeItemIndex: 1, val: undefined, multiSelectVal: [] };
+    this.state = {
+      activeItemIndex: 1,
+      val: undefined,
+      multiSelectVal: []
+    };
   }
   // onBackPress = () => {
   //   this.setState({ activeItemIndex: 3 });
@@ -163,7 +167,7 @@ export default class extends Component {
               multiple={true}
               includeSelectAll={true}
               includeFilter={true}
-              dropdownHeight={600}
+              dropdownHeight={250}
             />
           </InputGroup>
         </Col>
