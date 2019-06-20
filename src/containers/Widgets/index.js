@@ -1,26 +1,12 @@
 import React, { Component } from "react";
-import clone from "clone";
-import { Row, Col } from "antd";
+import { Row, Col, DatePicker } from "antd";
 import LayoutWrapper from "../../components/utility/layoutWrapper.js";
 import basicStyle from "../../settings/basicStyle";
 import IsoWidgetsWrapper from "./widgets-wrapper";
 import IsoWidgetBox from "./widget-box";
 import CardWidget from "./card/card-widgets";
-import ProgressWidget from "./progress/progress-widget";
-import SingleProgressWidget from "./progress/progress-single";
-import ReportsWidget from "./report/report-widget";
-import StickerWidget from "./sticker/sticker-widget";
-import SaleWidget from "./sale/sale-widget";
 
-import VCardWidget from "./vCard/vCard-widget";
-import SocialWidget from "./social-widget/social-widget";
-import SocialProfile from "./social-widget/social-profile-icon";
-import userpic from "../../image/user1.png";
-import Input, {
-  InputSearch,
-  InputGroup,
-  Textarea
-} from "../../components/uielements/input";
+import Input, { InputGroup } from "../../components/uielements/input";
 import Select, { SelectOption } from "../../components/uielements/select";
 import * as rechartConfigs from "../Charts/recharts/config";
 import IntlMessages from "../../components/utility/intlMessages";
@@ -47,9 +33,11 @@ import {
 } from "react-accessible-accordion";
 
 import "react-accessible-accordion/dist/fancy-example.css";
+import PAndLTable from "./P&LTable";
+
 const Option = SelectOption;
 const bigList = [];
-
+const { RangePicker } = DatePicker;
 for (var i = 1; i <= 1000; i++) {
   bigList.push({ id: i, name: `Item ${i}` });
 }
@@ -59,7 +47,10 @@ export default class extends Component {
     this.state = {
       activeItemIndex: 1,
       val: undefined,
-      multiSelectVal: "All Products"
+
+      isDatePicker: false,
+      date: "",
+      arrayValue: "All Products"
     };
   }
   // onBackPress = () => {
@@ -173,6 +164,14 @@ export default class extends Component {
             </Table.Row>
           </Table.Body>
         </Table>
+      </div>
+    );
+  };
+
+  renderPAndLTable = () => {
+    return (
+      <div className="table-responsive">
+        <PAndLTable />
       </div>
     );
   };
@@ -365,10 +364,16 @@ export default class extends Component {
   };
 
   selectMultipleOption = value => {
-    console.count("onChange");
     console.log("Val", value);
     this.setState({ arrayValue: value });
   };
+
+  tab1Filter1 = value => {
+    if (value === "Custom range") {
+      this.setState({ isDatePicker: true });
+    }
+  };
+
   renderTab1Filters = () => {
     return (
       <Row
@@ -386,27 +391,59 @@ export default class extends Component {
               borderRadius: "6px",
               width: "100%"
             }}
-            defaultValue="Zhejiang"
+            defaultValue="Period: Today / Yesterday / Forecast..."
+            onChange={value => {
+              this.tab1Filter1(value);
+            }}
           >
-            <Option style={{ margin: "20px" }} value="Zhejiang">
+            <Option
+              style={{ margin: "20px" }}
+              value="Period: Today / Yesterday / Forecast..."
+            >
               Period: Today / Yesterday / Forecast...
             </Option>
-            <Option style={{ margin: "20px" }} value="Jiangsu">
+            <Option
+              style={{ margin: "20px" }}
+              value="Period: Today / Yesterday..."
+            >
               Period: Today / Yesterday...
             </Option>
-            <Option style={{ margin: "20px" }} value="Jiangsu">
+            <Option
+              style={{ margin: "20px" }}
+              value="Period: Today / Yesterday / 7 days..."
+            >
               Period: Today / Yesterday / 7 days...
             </Option>
-            <Option style={{ margin: "20px" }} value="Jiangsu">
+            <Option
+              style={{ margin: "20px" }}
+              value="Period: This Week / Last Week..."
+            >
               Period: This Week / Last Week...
             </Option>
-            <Option style={{ margin: "20px" }} value="Jiangsu">
+            <Option
+              style={{ margin: "20px" }}
+              value="Period: This Month / Last Month..."
+            >
               Period: This Month / Last Month...
             </Option>
-            <Option style={{ margin: "20px" }} value="Jiangsu">
-              Custom range
+            <Option style={{ margin: "20px" }} value="Custom range">
+              {this.state.date ? this.state.date : "Custom range"}
             </Option>
           </Select>
+
+          {this.state.isDatePicker && (
+            <RangePicker
+              open={this.state.isDatePicker}
+              onChange={(dates, dateStrings) => {
+                this.setState({
+                  isDatePicker: false,
+                  date: `${dateStrings[0]} - ${dateStrings[1]}`
+                });
+                console.log(dates, "date");
+                console.log(dateStrings, "datestring");
+              }}
+            />
+          )}
         </Col>
 
         <Col md={6} xs={24} style={{ padding: " 0px 10px 0px 10px" }}>
@@ -420,7 +457,7 @@ export default class extends Component {
             }}
           >
             <Picky
-              value={this.state.multiSelectVal}
+              value={this.state.arrayValue}
               options={bigList}
               onChange={value => this.selectMultipleOption(value)}
               open={false}
@@ -436,9 +473,6 @@ export default class extends Component {
         <Col md={6} xs={24} style={{ padding: " 0px 10px 0px 10px" }}>
           <InputGroup compact>
             <Select
-              onChange={value => {
-                this.setState({ val: value });
-              }}
               style={{
                 width: "100%",
                 border: "2px solid #ddd",
@@ -447,19 +481,154 @@ export default class extends Component {
               defaultValue="
                 All Marketplaces"
             >
-              <Option Keys={1} value="Zhejiang">
+              <Option Keys={1} value="Amazon.co.uk">
                 Amazon.co.uk
               </Option>
-              <Option Keys={2} value="Jiangsu">
+              <Option Keys={2} value="Amazon.de">
                 Amazon.de
               </Option>
-              <Option Keys={2} value="Jiangsu">
+              <Option Keys={2} value="Amazon.es">
                 Amazon.es
               </Option>
-              <Option Keys={2} value="Jiangsu">
+              <Option Keys={2} value="Amazon.fr">
                 Amazon.fr
               </Option>
-              <Option Keys={2} value="Jiangsu">
+              <Option Keys={2} value=" Amazon.it">
+                Amazon.it
+              </Option>
+            </Select>
+          </InputGroup>
+        </Col>
+        <Col md={6} xs={24} style={{ padding: " 0px 10px 0px 10px" }}>
+          <Button type="primary" style={{ width: "100%" }}>
+            {<IntlMessages id="Filter" />}
+          </Button>
+        </Col>
+      </Row>
+    );
+  };
+
+  renderTilesFilter = () => {
+    return (
+      <Row
+        style={{
+          display: "flex",
+          flexFlow: "row wrap"
+        }}
+        gutter={0}
+        justify="start"
+      >
+        <Col md={6} xs={24} style={{ padding: " 0px 10px 0px 10px" }}>
+          <Select
+            style={{
+              border: "2px solid #ddd",
+              borderRadius: "6px",
+              width: "100%"
+            }}
+            defaultValue="Period: Today / Yesterday / Forecast..."
+            onChange={value => {
+              this.tab1Filter1(value);
+            }}
+          >
+            <Option
+              style={{ margin: "20px" }}
+              value="Period: Today / Yesterday / Forecast..."
+            >
+              Period: Today / Yesterday / Forecast...
+            </Option>
+            <Option
+              style={{ margin: "20px" }}
+              value="Period: Today / Yesterday..."
+            >
+              Period: Today / Yesterday...
+            </Option>
+            <Option
+              style={{ margin: "20px" }}
+              value="Period: Today / Yesterday / 7 days..."
+            >
+              Period: Today / Yesterday / 7 days...
+            </Option>
+            <Option
+              style={{ margin: "20px" }}
+              value="Period: This Week / Last Week..."
+            >
+              Period: This Week / Last Week...
+            </Option>
+            <Option
+              style={{ margin: "20px" }}
+              value="Period: This Month / Last Month..."
+            >
+              Period: This Month / Last Month...
+            </Option>
+            <Option style={{ margin: "20px" }} value="Custom range">
+              {this.state.date ? this.state.date : "Custom range"}
+            </Option>
+          </Select>
+
+          {this.state.isDatePicker && (
+            <RangePicker
+              open={this.state.isDatePicker}
+              onChange={(dates, dateStrings) => {
+                this.setState({
+                  isDatePicker: false,
+                  date: `${dateStrings[0]} - ${dateStrings[1]}`
+                });
+                console.log(dates, "date");
+                console.log(dateStrings, "datestring");
+              }}
+            />
+          )}
+        </Col>
+
+        <Col md={6} xs={24} style={{ padding: " 0px 10px 0px 10px" }}>
+          <InputGroup
+            compact
+            style={{
+              backgroundColor: "red",
+              border: "2px solid #ddd",
+              borderRadius: "6px",
+              fontWeight: "500"
+            }}
+          >
+            <Picky
+              value={this.state.arrayValue}
+              options={bigList}
+              onChange={value => this.selectMultipleOption(value)}
+              open={false}
+              valueKey="id"
+              labelKey="name"
+              multiple={true}
+              includeSelectAll={true}
+              includeFilter={false}
+              selectAllText="Select all"
+              dropdownHeight={600}
+            />
+          </InputGroup>
+        </Col>
+        <Col md={6} xs={24} style={{ padding: " 0px 10px 0px 10px" }}>
+          <InputGroup compact>
+            <Select
+              style={{
+                width: "100%",
+                border: "2px solid #ddd",
+                borderRadius: "6px"
+              }}
+              defaultValue="
+                All Marketplaces"
+            >
+              <Option Keys={1} value="Amazon.co.uk">
+                Amazon.co.uk
+              </Option>
+              <Option Keys={2} value="Amazon.de">
+                Amazon.de
+              </Option>
+              <Option Keys={2} value="Amazon.es">
+                Amazon.es
+              </Option>
+              <Option Keys={2} value="Amazon.fr">
+                Amazon.fr
+              </Option>
+              <Option Keys={2} value=" Amazon.it">
                 Amazon.it
               </Option>
             </Select>
@@ -1063,7 +1232,6 @@ export default class extends Component {
     );
   };
   render() {
-    console.log(this.state.val, "////////////////");
     const { rowStyle, colStyle } = basicStyle;
     const wisgetPageStyle = {
       display: "flex",
@@ -1130,7 +1298,7 @@ export default class extends Component {
                         }
                         key="1"
                       >
-                        {this.renderTab1Filters()}
+                        {this.renderTilesFilter()}
                         {this.renderTiles()}
                         {this.renderTable()}
                       </TabPane>
@@ -1146,6 +1314,19 @@ export default class extends Component {
                         {this.renderTab1Filters()}
                         {this.renderChart()}
                         {this.renderChartTable()}
+                      </TabPane>
+                      <TabPane
+                        tab={
+                          <span>
+                            <Icon type="bar-chart" />
+                            {"P&L"}
+                          </span>
+                        }
+                        key="3"
+                      >
+                        {this.renderTab1Filters()}
+                        {this.renderPAndLTable()}
+                        {this.renderTable()}
                       </TabPane>
                     </Tabs>
                   </Box>
