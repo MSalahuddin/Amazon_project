@@ -50,7 +50,15 @@ export default class extends Component {
 
       isDatePicker: false,
       date: "",
-      arrayValue: "All Products"
+      arrayValue: "All Products",
+
+      ppcSales: null,
+      organicSales: null,
+      fbaFees: null,
+      amazonFees: null,
+      ppcSpCosts: null,
+      ppcSpCost: null,
+      profit: null
     };
   }
   // onBackPress = () => {
@@ -800,38 +808,100 @@ export default class extends Component {
     );
   };
 
+  onMouseEnterOnChart = action => {
+    if (action.id === "PPC Sales") {
+      this.setState({ ppcSales: action.value * 2 });
+    } else if (action.id === "Organic Sales") {
+      this.setState({ organicSales: action.value * 2 });
+    } else if (action.id === "FBA Fees") {
+      this.setState({ fbaFees: action.value * 2 });
+    } else if (action.id === "Amazon Fees") {
+      this.setState({ amazonFees: action.value * 2 });
+    } else if (action.id === "PPC SP Costs") {
+      this.setState({ ppcSpCosts: action.value * 2 });
+    } else if (action.id === "PPC SP Cost") {
+      this.setState({ ppcSpCost: action.value * 2 });
+    } else if (action.id === "Profit") {
+      this.setState({ profit: action.value * 2 });
+    }
+    console.log(action, "actionMouseEnter");
+  };
+
+  onMouseLeaveOnChart = action => {
+    if (action.id === "PPC Sales") {
+      this.setState({ ppcSales: null });
+    } else if (action.id === "Organic Sales") {
+      this.setState({ organicSales: null });
+    } else if (action.id === "FBA Fees") {
+      this.setState({ fbaFees: null });
+    } else if (action.id === "Amazon Fees") {
+      this.setState({ amazonFees: null });
+    } else if (action.id === "PPC SP Costs") {
+      this.setState({ ppcSpCosts: null });
+    } else if (action.id === "PPC SP Cost") {
+      this.setState({ ppcSpCost: null });
+    } else if (action.id === "Profit") {
+      this.setState({ profit: null });
+    }
+    console.log(action, "onMouseLeaveonchart");
+  };
+
+  setChartLables = value => {
+    const {
+      ppcSales,
+      organicSales,
+      fbaFees,
+      amazonFees,
+      ppcSpCosts,
+      ppcSpCost,
+      profit
+    } = this.state;
+    if (value.id === "PPC Sales" && ppcSales) {
+      return `${value.id}     ${value.value / 2} %`;
+    } else if (value.id === "Organic Sales" && organicSales) {
+      return `${value.id}     ${value.value / 2} %`;
+    } else if (value.id === "FBA Fees" && fbaFees) {
+      return `${value.id}     ${value.value / 2} %`;
+    } else if (value.id === "Amazon Fees" && amazonFees) {
+      return `${value.id}     ${value.value / 2} %`;
+    } else if (value.id === "PPC SP Costs" && ppcSpCosts) {
+      return `${value.id}     ${value.value / 2} %`;
+    } else if (value.id === "PPC SP Cost" && ppcSpCost) {
+      return `${value.id}     ${value.value / 2} %`;
+    } else if (value.id === "Profit" && profit) {
+      return `${value.id}     ${value.value / 2} %`;
+    }
+    return value.id;
+  };
+
   renderChart = () => {
     let data = [
       {
         country: "Gross Sales",
-        "PPC Sales": 130,
+        "PPC Sales": this.state.ppcSales ? this.state.ppcSales : 17,
         lable: "PPC Sales 17%",
-
         "hot dogColor": "black",
-        "Organic Sales": 100,
+
+        "Organic Sales": this.state.organicSales ? this.state.organicSales : 25,
         lable: "Organic Sales 17%",
-        burgerColor: "green",
-        "Organic Sales": 100,
-        lable: "Organic Sales 17%"
+        burgerColor: "green"
       },
       {
         country: "Cost",
-        "FBA Fees": 120,
+        "FBA Fees": this.state.fbaFees ? this.state.fbaFees : 17,
         lable: "FBA Fees 17%",
-        "Amazon Fees": 105,
+        "Amazon Fees": this.state.amazonFees ? this.state.amazonFees : 30,
         lable: "Amazon Fees 17%",
-        "PPC SP Costs": 90,
+        "PPC SP Costs": this.state.ppcSpCosts ? this.state.ppcSpCosts : 17,
         lable: "PPC SP Costs 17%",
-        "PPC SP Cost": 62,
+        "PPC SP Cost": this.state.ppcSpCost ? this.state.ppcSpCost : 17,
         lable: "PPC SP Cost 17%"
       },
       {
         country: "Profit",
-        profit: 90,
+        Profit: this.state.profit ? this.state.profit : 17,
         lable: "Profit 17%",
-        "hot dogColor": "hsl(119, 70%, 50%)",
-        profit: 56,
-        lable: "Profit 17%"
+        "hot dogColor": "hsl(119, 70%, 50%)"
       }
     ];
     return (
@@ -847,11 +917,17 @@ export default class extends Component {
             layout="vertical"
             padding={0.2}
             innerPadding={2}
-            enableGridY={true}
-            height={500}
+            enableGridY={false}
+            axisLeft={false}
+            isInteractive={false}
+            height={300}
             label={value => {
-              return value.id;
+              return this.setChartLables(value);
             }}
+            onMouseEnter={action => {
+              this.onMouseEnterOnChart(action);
+            }}
+            onMouseLeave={action => this.onMouseLeaveOnChart(action)}
             // labelFormat={(value, id, data) => {
             //   console.log(value, "1111111111111");
             //   console.log(id, "1111111111111");
@@ -863,7 +939,7 @@ export default class extends Component {
               "Amazon Fees",
               "PPC SP Costs",
               "PPC SP Cost",
-              "profit"
+              "Profit"
             ]}
             indexBy="country"
             margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
@@ -949,30 +1025,30 @@ export default class extends Component {
               return data;
             }}
             //labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
-            legends={[
-              {
-                dataFrom: "keys",
-                anchor: "bottom-right",
-                direction: "column",
-                justify: false,
-                translateX: 120,
-                translateY: 0,
-                itemsSpacing: 2,
-                itemWidth: 100,
-                itemHeight: 20,
-                itemDirection: "left-to-right",
-                itemOpacity: 0.85,
-                symbolSize: 20,
-                effects: [
-                  {
-                    on: "hover",
-                    style: {
-                      itemOpacity: 1
-                    }
-                  }
-                ]
-              }
-            ]}
+            // legends={[
+            //   {
+            //     dataFrom: "keys",
+            //     anchor: "bottom-right",
+            //     direction: "column",
+            //     justify: false,
+            //     translateX: 120,
+            //     translateY: 0,
+            //     itemsSpacing: 2,
+            //     itemWidth: 100,
+            //     itemHeight: 20,
+            //     itemDirection: "left-to-right",
+            //     itemOpacity: 0.85,
+            //     symbolSize: 20,
+            //     effects: [
+            //       {
+            //         on: "hover",
+            //         style: {
+            //           itemOpacity: 1
+            //         }
+            //       }
+            //     ]
+            //   }
+            // ]}
             animate={true}
             motionStiffness={90}
             motionDamping={15}
