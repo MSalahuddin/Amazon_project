@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "itech-ec2c3",
+    "staging": "itech-ec2c3"
+  }
+}

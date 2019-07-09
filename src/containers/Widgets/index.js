@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, DatePicker } from "antd";
+import { Row, Col, DatePicker, Tooltip } from "antd";
 import LayoutWrapper from "../../components/utility/layoutWrapper.js";
 import basicStyle from "../../settings/basicStyle";
 import IsoWidgetsWrapper from "./widgets-wrapper";
@@ -473,7 +473,7 @@ export default class extends Component {
               labelKey="name"
               multiple={true}
               includeSelectAll={true}
-              includeFilter={true}
+              includeFilter={false}
               dropdownHeight={600}
             />
           </InputGroup>
@@ -539,36 +539,63 @@ export default class extends Component {
             }}
           >
             <Option
-              style={{ margin: "20px" }}
+              style={{
+                margin: "5px",
+                backgroundColor: "#f5f5f5",
+                border: "1px solid #ebebeb"
+              }}
               value="Period: Today / Yesterday / Forecast..."
             >
               Period: Today / Yesterday / Forecast...
             </Option>
             <Option
-              style={{ margin: "20px" }}
+              style={{
+                margin: "5px",
+                backgroundColor: "#f5f5f5",
+                border: "1px solid #ebebeb"
+              }}
               value="Period: Today / Yesterday..."
             >
               Period: Today / Yesterday...
             </Option>
             <Option
-              style={{ margin: "20px" }}
+              style={{
+                margin: "5px",
+                backgroundColor: "#f5f5f5",
+                border: "1px solid #ebebeb"
+              }}
               value="Period: Today / Yesterday / 7 days..."
             >
               Period: Today / Yesterday / 7 days...
             </Option>
             <Option
-              style={{ margin: "20px" }}
+              style={{
+                margin: "5px",
+                backgroundColor: "#f5f5f5",
+                border: "1px solid #ebebeb"
+              }}
               value="Period: This Week / Last Week..."
             >
               Period: This Week / Last Week...
             </Option>
             <Option
-              style={{ margin: "20px" }}
+              style={{
+                margin: "5px",
+                backgroundColor: "#f5f5f5",
+                border: "1px solid #ebebeb"
+              }}
               value="Period: This Month / Last Month..."
             >
               Period: This Month / Last Month...
             </Option>
-            <Option style={{ margin: "20px" }} value="Custom range">
+            <Option
+              style={{
+                margin: "5px",
+                backgroundColor: "#f5f5f5",
+                border: "1px solid #ebebeb"
+              }}
+              value="Custom range"
+            >
               {this.state.date ? this.state.date : "Custom range"}
             </Option>
           </Select>
@@ -624,19 +651,59 @@ export default class extends Component {
               defaultValue="
                 All Marketplaces"
             >
-              <Option Keys={1} value="Amazon.co.uk">
+              <Option
+                style={{
+                  margin: "5px",
+                  backgroundColor: "#f5f5f5",
+                  border: "1px solid #ebebeb"
+                }}
+                Keys={1}
+                value="Amazon.co.uk"
+              >
                 Amazon.co.uk
               </Option>
-              <Option Keys={2} value="Amazon.de">
+              <Option
+                style={{
+                  margin: "5px",
+                  backgroundColor: "#f5f5f5",
+                  border: "1px solid #ebebeb"
+                }}
+                Keys={2}
+                value="Amazon.de"
+              >
                 Amazon.de
               </Option>
-              <Option Keys={2} value="Amazon.es">
+              <Option
+                style={{
+                  margin: "5px",
+                  backgroundColor: "#f5f5f5",
+                  border: "1px solid #ebebeb"
+                }}
+                Keys={2}
+                value="Amazon.es"
+              >
                 Amazon.es
               </Option>
-              <Option Keys={2} value="Amazon.fr">
+              <Option
+                style={{
+                  margin: "5px",
+                  backgroundColor: "#f5f5f5",
+                  border: "1px solid #ebebeb"
+                }}
+                Keys={2}
+                value="Amazon.fr"
+              >
                 Amazon.fr
               </Option>
-              <Option Keys={2} value=" Amazon.it">
+              <Option
+                style={{
+                  margin: "5px",
+                  backgroundColor: "#f5f5f5",
+                  border: "1px solid #ebebeb"
+                }}
+                Keys={2}
+                value=" Amazon.it"
+              >
                 Amazon.it
               </Option>
             </Select>
@@ -713,12 +780,12 @@ export default class extends Component {
               <IsoWidgetsWrapper>
                 {/* Sale Widget */}
                 <CustomCard
-                  headerStyle={{ backgroundColor: "rgb(78, 145, 255)" }}
+                  headerStyle={{ backgroundColor: "#68a1ff" }}
                   date={"06/12/2016"}
                   label={<IntlMessages id="Today" />}
                   price={<IntlMessages id="widget.salewidget1.price" />}
                   details={<IntlMessages id="widget.salewidget1.details" />}
-                  fontColor="#F75D81"
+                  fontColor="#000000"
                 />
               </IsoWidgetsWrapper>
             </Col>
@@ -726,12 +793,14 @@ export default class extends Component {
               <IsoWidgetsWrapper>
                 {/* Sale Widget */}
                 <CustomCard
-                  headerStyle={{ backgroundColor: "rgb(37, 116, 183)" }}
+                  headerStyle={{
+                    backgroundColor: "#79c1d9"
+                  }}
                   date={"06/12/2016"}
                   label={<IntlMessages id="Yesterday" />}
                   price={<IntlMessages id="widget.salewidget1.price" />}
                   details={<IntlMessages id="widget.salewidget1.details" />}
-                  fontColor="#F75D81"
+                  fontColor="#000000"
                 />
               </IsoWidgetsWrapper>
             </Col>
@@ -739,12 +808,12 @@ export default class extends Component {
               <IsoWidgetsWrapper>
                 {/* Sale Widget */}
                 <CustomCard
-                  headerStyle={{ backgroundColor: "rgb(32, 134, 68)" }}
+                  headerStyle={{ backgroundColor: "#68c5b5" }}
                   date={"06/12/2016"}
                   label={<IntlMessages id="This Month" />}
                   price={<IntlMessages id="widget.salewidget1.price" />}
                   details={<IntlMessages id="widget.salewidget1.details" />}
-                  fontColor="#F75D81"
+                  fontColor="#000000"
                 />
               </IsoWidgetsWrapper>
             </Col>
@@ -752,12 +821,12 @@ export default class extends Component {
               <IsoWidgetsWrapper>
                 {/* Sale Widget */}
                 <CustomCard
-                  headerStyle={{ backgroundColor: "rgb(35, 103, 68)" }}
+                  headerStyle={{ backgroundColor: "#68c5b5" }}
                   date={"06/12/2016"}
                   label={<IntlMessages id="This Month(Forecast)" />}
                   price={<IntlMessages id="widget.salewidget1.price" />}
                   details={<IntlMessages id="widget.salewidget1.details" />}
-                  fontColor="#F75D81"
+                  fontColor="#000000"
                 />
               </IsoWidgetsWrapper>
             </Col>
@@ -765,12 +834,12 @@ export default class extends Component {
               <IsoWidgetsWrapper>
                 {/* Sale Widget */}
                 <CustomCard
-                  headerStyle={{ backgroundColor: "rgb(77, 130, 102)" }}
+                  headerStyle={{ backgroundColor: "#68c78d" }}
                   date={"06/12/2016"}
                   label={<IntlMessages id="Last Month" />}
                   price={<IntlMessages id="widget.salewidget1.price" />}
                   details={<IntlMessages id="widget.salewidget1.details" />}
-                  fontColor="#F75D81"
+                  fontColor="#000000"
                 />
               </IsoWidgetsWrapper>
             </Col>
@@ -822,7 +891,7 @@ export default class extends Component {
     } else if (action.id === "PPC SP Cost") {
       this.setState({ ppcSpCost: action.value * 2 });
     } else if (action.id === "Profit") {
-      this.setState({ profit: action.value * 2 });
+      this.setState({ profit: action.value * 4 });
     }
     console.log(action, "actionMouseEnter");
   };
@@ -857,34 +926,100 @@ export default class extends Component {
       profit
     } = this.state;
     if (value.id === "PPC Sales" && ppcSales) {
-      return `${value.id}     ${value.value / 2} %`;
+      return `${value.id}     ${value.value / 6} %  `;
     } else if (value.id === "Organic Sales" && organicSales) {
-      return `${value.id}     ${value.value / 2} %`;
+      return `${value.id}     ${value.value / 6} % `;
     } else if (value.id === "FBA Fees" && fbaFees) {
-      return `${value.id}     ${value.value / 2} %`;
+      return `${value.id}     ${value.value / 2} %   `;
     } else if (value.id === "Amazon Fees" && amazonFees) {
-      return `${value.id}     ${value.value / 2} %`;
+      return `${value.id}     ${value.value / 2} % `;
     } else if (value.id === "PPC SP Costs" && ppcSpCosts) {
-      return `${value.id}     ${value.value / 2} %`;
+      return `${value.id}     ${value.value / 2} % `;
     } else if (value.id === "PPC SP Cost" && ppcSpCost) {
-      return `${value.id}     ${value.value / 2} %`;
+      return `${value.id}     ${value.value / 2} % `;
     } else if (value.id === "Profit" && profit) {
-      return `${value.id}     ${value.value / 2} %`;
+      return `${value.id}     ${value.value / 4} % `;
     }
     return value.id;
   };
 
+  setTooltip = value => {
+    const {
+      ppcSales,
+      organicSales,
+      fbaFees,
+      amazonFees,
+      ppcSpCosts,
+      ppcSpCost,
+      profit
+    } = this.state;
+    if (value.id === "PPC Sales" && ppcSales) {
+      let data = {
+        value: ` ${value.value / 6} % `,
+        color: "#1f77b4",
+        price: 500
+      };
+      return data;
+    } else if (value.id === "Organic Sales" && organicSales) {
+      let data = {
+        value: ` ${value.value / 6} % `,
+        color: "#ff7f0e",
+        price: 500
+      };
+      return data;
+    } else if (value.id === "FBA Fees" && fbaFees) {
+      let data = {
+        value: ` ${value.value / 2} % `,
+        color: "#2ca02c",
+        price: 150
+      };
+      return data;
+    } else if (value.id === "Amazon Fees" && amazonFees) {
+      let data = {
+        value: ` ${value.value / 2} % `,
+        color: "#d62728",
+        price: 200
+      };
+      return data;
+    } else if (value.id === "PPC SP Costs" && ppcSpCosts) {
+      let data = {
+        value: ` ${value.value / 2} % `,
+        color: "#9467bd",
+        price: 150
+      };
+      return data;
+    } else if (value.id === "PPC SP Cost" && ppcSpCost) {
+      let data = {
+        value: ` ${value.value / 2} % `,
+        color: "#8c564b",
+        price: 100
+      };
+      return data;
+    } else if (value.id === "Profit" && profit) {
+      let data = {
+        value: ` ${value.value / 4} % `,
+        color: "#e377c2",
+        price: 500
+      };
+      return data;
+    }
+    return value.id;
+  };
   renderChart = () => {
     let data = [
       {
         country: "Gross Sales",
-        "PPC Sales": this.state.ppcSales ? this.state.ppcSales : 17,
-        lable: "PPC Sales 17%",
+        "PPC Sales": this.state.ppcSales ? this.state.ppcSales : 17 * 3,
+        lable: `PPC Sales ${17}%`,
         "hot dogColor": "black",
+        dollar: this.state.ppcSaleDollar,
 
-        "Organic Sales": this.state.organicSales ? this.state.organicSales : 25,
+        "Organic Sales": this.state.organicSales
+          ? this.state.organicSales
+          : 25 * 3,
         lable: "Organic Sales 17%",
-        burgerColor: "green"
+        burgerColor: "green",
+        dollar: this.state.organicSaleDollar
       },
       {
         country: "Cost",
@@ -919,10 +1054,41 @@ export default class extends Component {
             innerPadding={2}
             enableGridY={false}
             axisLeft={false}
-            isInteractive={false}
+            isInteractive={true}
+            tooltip={data => {
+              const toolTip = this.setTooltip(data);
+              return (
+                <div
+                  style={{
+                    backgroundColor: toolTip.color,
+                    width: "130%",
+                    height: "130%",
+                    paddingRight: "10%",
+                    paddingLeft: "10%",
+                    marginLeft: "-10%",
+                    marginRight: "-15%",
+                    marginTop: "-6%",
+                    marginBottom: "-7%",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
+                >
+                  <p style={{ fontSize: 16, color: "white" }}>{data.id}</p>
+                  <p style={{ fontSize: 16, color: "white" }}>{`percent: ${
+                    toolTip.value
+                  }`}</p>
+                  <p style={{ fontSize: 16, color: "white" }}>
+                    {`$${toolTip.price}`}
+                  </p>
+                </div>
+              );
+            }}
             height={300}
+            borderRadius={5}
             label={value => {
-              return this.setChartLables(value);
+              const label = this.setChartLables(value);
+
+              return label;
             }}
             onMouseEnter={action => {
               this.onMouseEnterOnChart(action);
@@ -984,20 +1150,22 @@ export default class extends Component {
             //     spacing: 10
             //   }
             // ]}
-            fill={[
-              {
-                match: {
-                  id: "fries"
-                },
-                id: "dots"
-              },
-              {
-                match: {
-                  id: "sandwich"
-                },
-                id: "lines"
-              }
-            ]}
+
+            // fill={[
+            //   {
+            //     match: {
+            //       id: "fries"
+            //     },
+            //     id: "dots"
+            //   },
+            //   {
+            //     match: {
+            //       id: "sandwich"
+            //     },
+            //     id: "lines"
+            //   }
+            // ]}
+
             borderColor={{ from: "color", modifiers: [["darker", 1.6]] }}
             axisTop={null}
             axisRight={null}
@@ -1021,9 +1189,10 @@ export default class extends Component {
             labelSkipWidth={12}
             labelSkipHeight={12}
             labelTextColor={"white"}
-            labelFormat={data => {
-              return data;
-            }}
+            // labelFormat={data => {
+            //   console.log(data, "sssssssssssss");
+            //   return data;
+            // }}
             //labelTextColor={{ from: "color", modifiers: [["darker", 1.6]] }}
             // legends={[
             //   {
@@ -1065,7 +1234,12 @@ export default class extends Component {
     return (
       <Accordion
         allowMultipleExpanded={true}
-        style={{ marginTop: "20px", marginLeft: "10px", marginRight: "10px" }}
+        allowZeroExpanded={true}
+        style={{
+          marginTop: "20px",
+          marginLeft: "10px",
+          marginRight: "10px"
+        }}
       >
         <AccordionItem>
           <AccordionItemHeading>
@@ -1407,84 +1581,9 @@ export default class extends Component {
                     </Tabs>
                   </Box>
                 </Row>
-
-                {/* TABLE */}
-                {/* <TableViews.SimpleView
-                    tableInfo={tableinfos[0]}
-                    dataList={tableDataList}
-                  /> */}
               </IsoWidgetBox>
-
-              {/* <CardWidget
-                //icon="ion-android-chat"
-                //iconcolor="#42A5F5"
-                propsStyle={{ width: "100%" }}
-                isIcon={false}
-                isSeprator={true}
-                number={"Dashboard"}
-                text={
-                  "Dashboard is your main tool for analysing your key performance indicators. Here you can see your daily profit in real time, as well as drill down into any period of time or product and see a list of all fees. Click more on the tiles or in the product table to see detailed numbers. Switch to the chart or P&L table view on the top of the panel to see a different representation of the data. Filter the dashboard by any product or group of products (e.g. by brand), by marketplace or choose a custom period of time in the date filter."
-                }
-                headingStyle={{ color: "grey" }}
-                textStyle={{ marginTop: "2%" }}
-              /> */}
-              {/* </IsoWidgetsWrapper> */}
             </Col>
           </Row>
-
-          {/* <Row style={rowStyle} gutter={0} justify="start"> */}
-          {/* <Col lg={6} md={12} sm={12} xs={24} style={colStyle}> */}
-          {/* <IsoWidgetsWrapper> */}
-          {/* Sticker Widget */}
-          {/* <StickerWidget
-                  number={<IntlMessages id="widget.stickerwidget1.number" />}
-                  text={<IntlMessages id="widget.stickerwidget1.text" />}
-                  icon="ion-email-unread"
-                  fontColor="#ffffff"
-                  bgColor="#7266BA"
-                /> */}
-          {/* </IsoWidgetsWrapper> */}
-          {/* </Col> */}
-
-          {/* <Col lg={6} md={12} sm={12} xs={24} style={colStyle}> */}
-          {/* <IsoWidgetsWrapper> */}
-          {/* Sticker Widget */}
-          {/* <StickerWidget
-                  number={<IntlMessages id="widget.stickerwidget1.number" />}
-                  text={<IntlMessages id="widget.stickerwidget2.text" />}
-                  icon="ion-android-camera"
-                  fontColor="#ffffff"
-                  bgColor="#42A5F6"
-                /> */}
-          {/* </IsoWidgetsWrapper> */}
-          {/* </Col> */}
-
-          {/* <Col lg={6} md={12} sm={12} xs={24} style={colStyle}> */}
-          {/* <IsoWidgetsWrapper> */}
-          {/* Sticker Widget */}
-          {/* <StickerWidget
-                  number={<IntlMessages id="widget.stickerwidget1.number" />}
-                  text={<IntlMessages id="widget.stickerwidget3.text" />}
-                  icon="ion-chatbubbles"
-                  fontColor="#ffffff"
-                  bgColor="#7ED320"
-                /> */}
-          {/* </IsoWidgetsWrapper> */}
-          {/* </Col> */}
-
-          {/* <Col lg={6} md={12} sm={12} xs={24} style={colStyle}> */}
-          {/* <IsoWidgetsWrapper> */}
-          {/* Sticker Widget */}
-          {/* <StickerWidget
-                  number={<IntlMessages id="widget.stickerwidget1.number" />}
-                  text={<IntlMessages id="widget.stickerwidget4.text" />}
-                  icon="ion-android-cart"
-                  fontColor="#ffffff"
-                  bgColor="#F75D81"
-                /> */}
-          {/* </IsoWidgetsWrapper> */}
-          {/* </Col> */}
-          {/* </Row> */}
         </div>
       </LayoutWrapper>
     );

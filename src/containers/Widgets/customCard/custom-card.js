@@ -44,7 +44,8 @@ export default class extends Component {
                   paddingTop: "25px",
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 Sales
@@ -54,7 +55,8 @@ export default class extends Component {
                   paddingTop: "5px",
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 $914.05
@@ -64,7 +66,8 @@ export default class extends Component {
                   paddingTop: "25px",
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 Advertising Cost
@@ -74,7 +77,8 @@ export default class extends Component {
                   paddingTop: "5px",
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 $-914.05
@@ -84,7 +88,8 @@ export default class extends Component {
                   paddingTop: "25px",
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 Gross Profit
@@ -95,7 +100,8 @@ export default class extends Component {
                   paddingBottom: "10px",
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 $94.05
@@ -107,7 +113,8 @@ export default class extends Component {
                   paddingTop: "10px",
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 Orders/
@@ -116,7 +123,8 @@ export default class extends Component {
                 style={{
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 Units/Refunds
@@ -126,7 +134,8 @@ export default class extends Component {
                   paddingTop: "5px",
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 $914.05
@@ -136,7 +145,8 @@ export default class extends Component {
                   paddingTop: "25px",
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 Estimated Payout
@@ -146,7 +156,8 @@ export default class extends Component {
                   paddingTop: "5px",
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 $-914.05
@@ -156,7 +167,8 @@ export default class extends Component {
                   paddingTop: "25px",
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 Net Profit
@@ -167,7 +179,8 @@ export default class extends Component {
                   paddingBottom: "10px",
                   width: "100%",
                   textAlign: "center",
-                  fontSize: "12px"
+                  fontSize: "12px",
+                  color: fontColor
                 }}
               >
                 $94.05

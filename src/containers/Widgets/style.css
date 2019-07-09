@@ -11,8 +11,14 @@
 .accordion__button:before {
   float: right !important;
   margin-right: 0px !important;
+  margin-top: 4px !important;
 }
 
+.accordion__button {
+  padding: 9px 10px 9px 9px !important;
+  font-size: 12px !important ;
+  background-color: white !important;
+}
 .ant-table-tbody > tr > td {
   padding: 16px 4px !important;
 }
@@ -31,4 +37,36 @@
 .ant-table-row > td {
   background: "none";
   white-space: nowrap;
+}
+
+.isoBoxWrapper .ant-col-md-18 svg {
+  border: 1px solid #ddd;
+  margin: 21px 0px 0px 9px;
+  width: 98%;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: 2px 2px 3px 2px #ccc;
+}
+.accordion {
+  overflow-y: scroll;
+  height: 300px;
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow: 2px 2px 3px 2px #ccc;
+}
+.accordion__item {
+  margin: 10px 10px 10px 10px;
+}
+.accordion__panel {
+  border: 1px solid white;
+  border-radius: 0px 0px 5px 5px;
+  border-top: none;
+}
+.ant-tabs-nav-scroll {
+  height: 50px;
+  background-color: #f5f5f5;
+}
+
+.iwlYu {
+  border: 2px solid #ebebeb;
 }
